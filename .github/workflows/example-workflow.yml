@@ -1,0 +1,40 @@
+name: Example Long Running Job With Steps
+
+on:
+  pull_request:
+    branches:
+      - main  
+
+jobs:
+  long-running-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Start processing
+        run: echo "Starting long running job..."
+
+      - name: Step 1 - Do something
+        run: |
+          echo "Step 1: Doing something..."
+          sleep 10
+
+      - name: Step 2 - Do something more
+        run: |
+          echo "Step 2: Still working..."
+          sleep 10
+
+      - name: Step 3 - Almost there
+        run: |
+          echo "Step 3: Almost done..."
+          sleep 10
+
+      - name: Final step
+        run: |
+          echo "Final step: Wrapping up..."
+          sleep 10
+
+      - name: Done
+        run: echo "Job done!"
